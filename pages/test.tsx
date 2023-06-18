@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Test() {
   const [values, setValues] = useState({
@@ -74,6 +75,7 @@ export default function Test() {
   return (
     <div>
       <h1>test page입니다</h1>
+      <Link href={"/"}>돌아가기</Link>;
       <div>
         <input
           name="id"
