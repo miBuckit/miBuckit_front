@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Test() {
   const [values, setValues] = useState({
@@ -12,6 +13,13 @@ export default function Test() {
   const [id, setId] = useState();
 
   const [name, setName] = useState();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    // 쿼리 파람 가져오기
+    console.log(router);
+  }, [router.isReady]);
 
   const handleOnClick1 = () => {
     const url = "http://localhost:8080/test/get";
