@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 /**
  * 헤더 푸터 있는 화면 layout
@@ -8,12 +9,13 @@ import Navbar from "./Navbar";
  */
 export default function MainLayout({ children }: PropsWithChildren) {
   return (
-    <div className="md">
+    <div className="md h-screen w-screen">
       {/* Navbar */}
       <Navbar />
       {/* contents */}
       <main>{children}</main>
       {/* Footer */}
+      <Footer />
     </div>
   );
 }
