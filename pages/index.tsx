@@ -1,5 +1,10 @@
+import MainLayout from "@/components/app/Layout";
 import Link from "next/link";
 
 export default function Home() {
-  return <Link href={"/entr/signIn"}>test page 이동</Link>;
+  return (
+    <MainLayout>
+      <h1 className="center">MAIN</h1>
+    </MainLayout>
+  );
 }
