@@ -85,7 +85,7 @@ export default function Navbar() {
               <div className="flex space-x-4">
                 <Link
                   href="/"
-                  className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   aria-current="page"
                 >
                   메인
