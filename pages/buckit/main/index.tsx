@@ -1,9 +1,9 @@
 import MainLayout from "@/components/app/Layout";
 
-export default function Detl() {
+export default function Main() {
   return (
     <MainLayout>
-      <h1 className="center">상세</h1>
+      <h1 className="center">메인</h1>
     </MainLayout>
   );
 }
