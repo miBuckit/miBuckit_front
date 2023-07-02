@@ -13,7 +13,8 @@ function classNames(...classNamees: string[]) {
 //id나 class로 빼서 상위에서 css한꺼번에 설정하기
 export default function Footer() { 
   return (
-    <div className="absolute bottom-0 w-screen bg-yellow-200 py-20">
+    //border-t-2
+    <div className="relative bottom-0 w-screen bg-yellow-200 py-20">
       <div className="mx-auto max-w-7xl px-20">
         <div className="">
           <div className="basis-1/4">
