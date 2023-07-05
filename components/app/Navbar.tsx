@@ -10,7 +10,8 @@ const navigation = [
 
 export default function Navbar() {
   const [logOn, setLogOn] = useState("off");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isNotiOpen, setIsNotiOpen] = useState(false);
+  const [isSettingOpen, setIsSettingOpen] = useState(false);
 
   const loginTest = () => {
     setLogOn("on");
@@ -20,12 +21,17 @@ export default function Navbar() {
     setLogOn("off");
   };
 
-  const toggleButton = () => {
-    setIsOpen((isOpen) => !isOpen);
-    console.log(isOpen);
+  const toggleProfile = () => {
+    setIsSettingOpen((isSettingOpen) => !isSettingOpen);
+    console.log(isSettingOpen);
   };
 
-  useEffect(() => {}, []);
+  const toggleNoti = () => {
+    setIsNotiOpen((isNotiOpen) => !isNotiOpen);
+    console.log(isNotiOpen);
+  };
+
+  useEffect(() => { }, []);
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -82,9 +88,9 @@ export default function Navbar() {
               ></img>
             </div>
             <div className="hidden sm:ml-6 sm:block">
-              <div className="flex space-x-4">
+              <div className="flex space-x-3">
                 <Link
-                  href="/buckit/main"
+                  href="/"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   aria-current="page"
                 >
@@ -133,27 +139,58 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="flex items-center">
-                {/* 알림버튼 */}
-                <button
-                  type="button"
-                  className="lg:inline rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
+                <div className="relative ml-3">
+                  <div>
+                    {/* 알림버튼 */}
+                    <button
+                      type="button"
+                      className="lg:inline rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      onClick={toggleNoti}
+                    >
+                      <span className="sr-only">View notifications</span>
+                      <svg
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  {/* 알림 아래 div */}
+                  <div
+                    className={
+                      (isNotiOpen ? "" : "hidden" + " ") +
+                      "absolute right-0 z-10 mt-2 w-128px origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    }
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="user-menu-button"
+                    tabIndex={-1}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                    />
-                  </svg>
-                </button>
+                    <Link
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      id="user-menu-item-0"
+                    >
+                      설정
+                    </Link>
+                    <button
+                      className="absolute top-2 right-2 text-gray-700"
+                      onClick={logoutTest}
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
                 {/* 프로필 이미지 */}
                 <div className="relative ml-3">
                   <div>
@@ -163,7 +200,7 @@ export default function Navbar() {
                       id="user-menu-button"
                       aria-expanded="false"
                       aria-haspopup="true"
-                      onClick={toggleButton}
+                      onClick={toggleProfile}
                     >
                       <span className="sr-only">Open user menu</span>
                       <img
@@ -174,9 +211,10 @@ export default function Navbar() {
                     </button>
                   </div>
                   {/* 프로필 사진 아래 div */}
+
                   <div
                     className={
-                      (isOpen ? "" : "hidden" + " ") +
+                      (isSettingOpen ? "" : "hidden" + " ") +
                       "absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     }
                     role="menu"
@@ -199,6 +237,7 @@ export default function Navbar() {
                       로그아웃
                     </button>
                   </div>
+
                 </div>
               </div>
             )}
