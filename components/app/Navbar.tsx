@@ -23,11 +23,13 @@ export default function Navbar() {
 
   const toggleProfile = () => {
     setIsSettingOpen((isSettingOpen) => !isSettingOpen);
+    setIsNotiOpen((isSettingOpen) => false);
     console.log(isSettingOpen);
   };
 
   const toggleNoti = () => {
     setIsNotiOpen((isNotiOpen) => !isNotiOpen);
+    setIsSettingOpen((isNotiOpen) => false);
     console.log(isNotiOpen);
   };
 
@@ -168,7 +170,7 @@ export default function Navbar() {
                   <div
                     className={
                       (isNotiOpen ? "" : "hidden" + " ") +
-                      "absolute right-0 z-10 mt-2 w-128px origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      "absolute right-0 z-10 mt-2 w-[250px] h-[320px] origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     }
                     role="menu"
                     aria-orientation="vertical"
@@ -181,11 +183,11 @@ export default function Navbar() {
                       role="menuitem"
                       id="user-menu-item-0"
                     >
-                      설정
+                    알림
                     </Link>
                     <button
                       className="absolute top-2 right-2 text-gray-700"
-                      onClick={logoutTest}
+                      onClick={toggleNoti}
                     >
                       x
                     </button>
