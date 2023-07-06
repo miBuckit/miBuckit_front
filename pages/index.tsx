@@ -44,7 +44,7 @@ export default function Home() {
   ]
 
   const imgList = test.map((item) => (
-    <a href="#" className="group ">
+    <a href="#" className="max-h-250">
       <div className="max-h-200 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
         <img src={item.path} className="h-300"></img>
       </div>
