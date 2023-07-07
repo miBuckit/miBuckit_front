@@ -31,7 +31,7 @@ export default function Home() {
     },
     { id: 5, path: "img/5.jpeg", name: "오은혜", cntn: "은해이직" },
     { id: 6, path: "img/6.jpeg", name: "오은해", cntn: "마" },
-    { id: 7, path: "img/7.jpeg", name: "오은해", cntn: "상습서운하게하기형" },
+    { id: 7, path: "img/7.jpeg", name: "이승제", cntn: "콩" },
     { id: 8, path: "img/8.jpeg", name: "이승제", cntn: "콩이" },
     { id: 9, path: "img/9.jpeg", name: "이승제", cntn: "페퍼민트" },
   ];
@@ -61,6 +61,7 @@ export default function Home() {
       <p className="mt-1 text-lg font-medium text-gray-900">{item.cntn}</p>
     </a>
   ));
+
   return (
     <MainLayout>
       <div className="bg-white">
