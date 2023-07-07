@@ -33,10 +33,10 @@ export default function Navbar() {
     console.log(isNotiOpen);
   };
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
   return (
-    <nav className="bg-gray-800">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <nav className="sticky top-0">
+      <div className=" bg-gray-800  px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
@@ -183,7 +183,7 @@ export default function Navbar() {
                       role="menuitem"
                       id="user-menu-item-0"
                     >
-                    알림
+                      알림
                     </Link>
                     <button
                       className="absolute top-2 right-2 text-gray-700"
@@ -239,7 +239,6 @@ export default function Navbar() {
                       로그아웃
                     </button>
                   </div>
-
                 </div>
               </div>
             )}
