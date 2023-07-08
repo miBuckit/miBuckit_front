@@ -1,18 +1,19 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 
-const navigation = [
-
-  { name: "main", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-];
-
-console.log(navigation[0]);
-
-
 export default function Navbar() {
+  // 테스트 데이터
+  const notiData = [
+    {
+      id: 1,
+      cntn: "안녕하세요 이승제님 회원가입을 축하합니다.",
+    },
+    {
+      id: 2,
+      cntn: "공지사항",
+    },
+  ];
+
   const [logOn, setLogOn] = useState("off");
   const [isNotiOpen, setIsNotiOpen] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
@@ -37,11 +38,15 @@ export default function Navbar() {
     console.log(isNotiOpen);
   };
 
-  const deleteNoti = () => {
+  const NotiList = notiData.map((item) => (
+    <div key={item.id} className="mb-3 text-sm">
+      <p>{item.cntn}</p>
+    </div>
+  ));
 
-  };
+  const deleteNoti = () => {};
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
   return (
     <nav className="sticky top-0 z-50">
       <div className=" bg-gray-800  px-2 sm:px-6 lg:px-8">
@@ -178,17 +183,15 @@ export default function Navbar() {
                   <div
                     className={
                       (isNotiOpen ? "" : "hidden" + " ") +
-                      "absolute right-0 z-10 mt-2 w-[250px] h-[320px] origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      "py-5 px-5 absolute right-0 z-10 mt-2 w-[250px] h-[320px] origin-top-right rounded-md bg-gray-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     }
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
                     tabIndex={-1}
                   >
-                    <div className="h-5 flex justify-between px-2">
-                      <label className="text-sm text-gray-700">
-                        알림
-                      </label>
+                    <div className="h-5 mb-3 flex justify-between">
+                      <label className="text-sm text-gray-700">알림</label>
                       <button
                         className="text-sm text-gray-700"
                         onClick={deleteNoti}
@@ -196,6 +199,7 @@ export default function Navbar() {
                         모두삭제
                       </button>
                     </div>
+                    {NotiList}
                   </div>
                 </div>
                 {/* 프로필 이미지 */}
