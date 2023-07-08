@@ -2,11 +2,15 @@ import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 
 const navigation = [
+
   { name: "main", href: "#", current: true },
   { name: "Team", href: "#", current: false },
   { name: "Projects", href: "#", current: false },
   { name: "Calendar", href: "#", current: false },
 ];
+
+console.log(navigation[0]);
+
 
 export default function Navbar() {
   const [logOn, setLogOn] = useState("off");
@@ -33,7 +37,11 @@ export default function Navbar() {
     console.log(isNotiOpen);
   };
 
-  useEffect(() => {}, []);
+  const deleteNoti = () => {
+
+  };
+
+  useEffect(() => { }, []);
   return (
     <nav className="sticky top-0 z-50">
       <div className=" bg-gray-800  px-2 sm:px-6 lg:px-8">
@@ -177,20 +185,17 @@ export default function Navbar() {
                     aria-labelledby="user-menu-button"
                     tabIndex={-1}
                   >
-                    <Link
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700"
-                      role="menuitem"
-                      id="user-menu-item-0"
-                    >
-                      알림
-                    </Link>
-                    <button
-                      className="absolute top-2 right-2 text-gray-700"
-                      onClick={toggleNoti}
-                    >
-                      x
-                    </button>
+                    <div className="h-5 flex justify-between px-2">
+                      <label className="text-sm text-gray-700">
+                        알림
+                      </label>
+                      <button
+                        className="text-sm text-gray-700"
+                        onClick={deleteNoti}
+                      >
+                        모두삭제
+                      </button>
+                    </div>
                   </div>
                 </div>
                 {/* 프로필 이미지 */}

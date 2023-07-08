@@ -39,16 +39,15 @@ export default function Home() {
   const [isclicked1, setIsclicked1] = useState(false);
   const [isclicked2, setIsclicked2] = useState(false);
 
-  const handleFilter = (buttonId: String) => {
-    console.log(buttonId);
+  const handleFilter = (buttonId: Number) => {
 
-    setIsclicked1(false);
-    setIsclicked2(false);
+    if (buttonId == 1) {
+      setIsclicked1((isclicked1) => (!isclicked1));
+      setIsclicked2(false);
 
-    if (buttonId == "1") {
-      setIsclicked1(true);
-    } else if (buttonId == "2") {
-      setIsclicked2(true);
+    } else if (buttonId == 2) {
+      setIsclicked2((isclicked2) => (!isclicked2));
+      setIsclicked1(false);
     }
   };
 
@@ -69,13 +68,13 @@ export default function Home() {
           <div className="text-gray-700 flex space-x-3 border-b-2">
             <h1>정렬 :</h1>
             <button
-              onClick={() => handleFilter("1")}
+              onClick={() => handleFilter(1)}
               className={isclicked1 ? "text-black font-bold" : " "}
             >
               최신순
             </button>
             <button
-              onClick={() => handleFilter("2")}
+              onClick={() => handleFilter(2)}
               className={isclicked2 ? "text-black font-bold" : " "}
             >
               인기순
