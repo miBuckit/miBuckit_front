@@ -1,4 +1,5 @@
 import axios from "axios";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Test() {
@@ -37,10 +38,13 @@ export default function Test() {
   };
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          로그인
-        </h2>
+      <div className="text-center sm:mx-auto sm:w-full sm:max-w-sm">
+        <Link
+          href="/"
+          className=" text-2xl font-bold leading-9 tracking-tight text-gray-900"
+        >
+          MiBuckit
+        </Link>
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -89,29 +93,14 @@ export default function Test() {
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium leading-6 text-gray-900">
-              Name
-            </label>
-            <div className="mt-2">
-              <input
-                name="testNm"
-                type="text"
-                value={values.testNm}
-                onChange={handleChange}
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              ></input>
-            </div>
-          </div>
-
+          {/* 로그인 버튼 */}
           <div>
             <button
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               onClick={handleOnClick2}
             >
-              Sign Up
+              로그인 하기
             </button>
           </div>
         </form>
