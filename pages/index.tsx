@@ -63,24 +63,26 @@ export default function Home() {
 
   return (
     <MainLayout>
-      <div className="bg-white">
+      <div className="bg-white h-full">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          {/* 필터 부분 */}
           <div className="text-gray-700 flex space-x-3 border-b-2">
             <h1>정렬 :</h1>
             <button
               onClick={() => handleFilter(1)}
-              className={isclicked1 ? "text-black font-bold" : " "}
+              className={isclicked1 ? "text-black font-bold" : "hover:text-black hover:font-bold"}
             >
               최신순
             </button>
             <button
               onClick={() => handleFilter(2)}
-              className={isclicked2 ? "text-black font-bold" : " "}
+              className={isclicked2 ? "text-black font-bold" : "hover:text-black hover:font-bold"}
             >
               인기순
             </button>
           </div>
-          <div className=" py-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          {/* 이미지 출력 부분 스크롤엔드로 페이징 처리 필요 */}
+          <div className="h-[500px] overflow-auto scrollbar-hide py-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {imgList}
           </div>
         </div>

@@ -5,12 +5,21 @@ export default function Navbar() {
   // 테스트 데이터
   const notiData = [
     {
-      id: 1,
+      id: "1",
       cntn: "안녕하세요 이승제님 회원가입을 축하합니다.",
     },
     {
-      id: 2,
+      id: "2",
       cntn: "공지사항",
+    }, {
+      id: "3",
+      cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
+    }, {
+      id: "4",
+      cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
+    }, {
+      id: "5",
+      cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
     },
   ];
 
@@ -39,14 +48,25 @@ export default function Navbar() {
   };
 
   const NotiList = notiData.map((item) => (
-    <div key={item.id} className="mb-3 text-sm">
-      <p>{item.cntn}</p>
+    <div key={item.id} className="p-2 text-ellipsis overflow-hidden flex justify-between h-[55px] mb-3 text-sm border-solid border-2 border-white-500">
+      <div className="mr-3">
+        <p className="">{item.cntn}</p>
+      </div>
+      <div className="text-gray-500"><button onClick={()=> deleteNoti({item.id})}>X</button></div>
     </div>
   ));
 
-  const deleteNoti = () => {};
+  // 읽음Y/N 처리 필요
+  const deleteNoti = (id: string) => {
 
-  useEffect(() => {}, []);
+  };
+
+  // 읽음Y/N 처리 필요
+  const deleteAllNoti = () => {
+
+  };
+
+  useEffect(() => { }, []);
   return (
     <nav className="sticky top-0 z-50">
       <div className=" bg-gray-800  px-2 sm:px-6 lg:px-8">
@@ -162,7 +182,6 @@ export default function Navbar() {
                       className="lg:inline rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       onClick={toggleNoti}
                     >
-                      <span className="sr-only">View notifications</span>
                       <svg
                         className="h-6 w-6"
                         fill="none"
@@ -183,22 +202,24 @@ export default function Navbar() {
                   <div
                     className={
                       (isNotiOpen ? "" : "hidden" + " ") +
-                      "py-5 px-5 absolute right-0 z-10 mt-2 w-[250px] h-[320px] origin-top-right rounded-md bg-gray-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      "overflow-auto scrollbar-hide py-5 px-5 absolute right-0 z-10 mt-2 w-[300px] h-[320px] origin-top-right rounded-md bg-gray-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     }
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
                     tabIndex={-1}
                   >
-                    <div className="h-5 mb-3 flex justify-between">
+                    <div className=" sh-5 mb-3 flex justify-between">
                       <label className="text-sm text-gray-700">알림</label>
+                      {/* 모두삭제 버튼은 전체 읽음 처리가 안된 부분 읽음(Y)으로 처리 */}
                       <button
                         className="text-sm text-gray-700"
-                        onClick={deleteNoti}
+                        onClick={deleteAllNoti}
                       >
                         모두삭제
                       </button>
                     </div>
+                    {/* 알림 리스트 */}
                     {NotiList}
                   </div>
                 </div>
@@ -226,7 +247,7 @@ export default function Navbar() {
                   <div
                     className={
                       (isSettingOpen ? "" : "hidden" + " ") +
-                      "absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      "absolute flex flex-col text-center right-0 z-10 mt-2 w-24 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     }
                     role="menu"
                     aria-orientation="vertical"
@@ -234,12 +255,20 @@ export default function Navbar() {
                     tabIndex={-1}
                   >
                     <Link
+                      href="/buckit/profile"
+                      className="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      id="user-menu-item-0"
+                    >
+                      내 프로필
+                    </Link>
+                    <Link
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       id="user-menu-item-0"
                     >
-                      설정
+                      계정 설정
                     </Link>
                     <button
                       className="block px-4 py-2 text-sm text-gray-700"
