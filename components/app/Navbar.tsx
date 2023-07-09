@@ -3,11 +3,11 @@ import { document } from "postcss";
 import { Fragment, useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
-  // 테스트 데이터
+  // 테스트 데이터 - API로 변경
   const [notiData, setNotiData] = useState([
     {
       id: "1",
-      cntn: "안녕하세요 이승제님 회원가입을 축하합니다.",
+      cntn: "안녕하세요 아무개님 회원가입을 축하합니다.",
     },
     {
       id: "2",
@@ -75,12 +75,14 @@ export default function Navbar() {
     setNotiData([]);
   };
 
+  // localStorage는 렌더링 후에 생성으로 uesEffect 사용해서 호출
   useEffect(() => {
     const login = localStorage.getItem("ACCESS_TOKEN");
     if (login != null) {
       setLogOn("on");
     }
   }, []);
+
   return (
     <nav className="sticky top-0 z-50">
       <div className=" bg-gray-800  px-2 sm:px-6 lg:px-8">
