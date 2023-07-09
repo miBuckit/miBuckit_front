@@ -40,13 +40,11 @@ export default function Home() {
   const [isclicked2, setIsclicked2] = useState(false);
 
   const handleFilter = (buttonId: Number) => {
-
     if (buttonId == 1) {
-      setIsclicked1((isclicked1) => (!isclicked1));
+      setIsclicked1((isclicked1) => !isclicked1);
       setIsclicked2(false);
-
     } else if (buttonId == 2) {
-      setIsclicked2((isclicked2) => (!isclicked2));
+      setIsclicked2((isclicked2) => !isclicked2);
       setIsclicked1(false);
     }
   };
@@ -70,19 +68,27 @@ export default function Home() {
             <h1>정렬 :</h1>
             <button
               onClick={() => handleFilter(1)}
-              className={isclicked1 ? "text-black font-bold" : "hover:text-black hover:font-bold"}
+              className={
+                isclicked1
+                  ? "text-black font-bold"
+                  : "hover:text-black hover:font-bold"
+              }
             >
               최신순
             </button>
             <button
               onClick={() => handleFilter(2)}
-              className={isclicked2 ? "text-black font-bold" : "hover:text-black hover:font-bold"}
+              className={
+                isclicked2
+                  ? "text-black font-bold"
+                  : "hover:text-black hover:font-bold"
+              }
             >
               인기순
             </button>
           </div>
           {/* 이미지 출력 부분 스크롤엔드로 페이징 처리 필요 */}
-          <div className="h-[500px] overflow-auto scrollbar-hide py-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          <div className="h-[1050px] overflow-auto scrollbar-hide py-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {imgList}
           </div>
         </div>

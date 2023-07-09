@@ -11,13 +11,16 @@ export default function Navbar() {
     {
       id: "2",
       cntn: "공지사항",
-    }, {
+    },
+    {
       id: "3",
       cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
-    }, {
+    },
+    {
       id: "4",
       cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
-    }, {
+    },
+    {
       id: "5",
       cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
     },
@@ -48,25 +51,26 @@ export default function Navbar() {
   };
 
   const NotiList = notiData.map((item) => (
-    <div key={item.id} className="p-2 text-ellipsis overflow-hidden flex justify-between h-[55px] mb-3 text-sm border-solid border-2 border-white-500">
+    <div
+      key={item.id}
+      className="p-2 text-ellipsis overflow-hidden flex justify-between h-[55px] mb-3 text-sm border-solid border-2 border-white-500"
+    >
       <div className="mr-3">
         <p className="">{item.cntn}</p>
       </div>
-      <div className="text-gray-500"><button onClick={()=> deleteNoti({item.id})}>X</button></div>
+      <div className="text-gray-500">
+        <button onClick={() => deleteNoti}>X</button>
+      </div>
     </div>
   ));
 
   // 읽음Y/N 처리 필요
-  const deleteNoti = (id: string) => {
-
-  };
+  const deleteNoti = (id: string) => {};
 
   // 읽음Y/N 처리 필요
-  const deleteAllNoti = () => {
+  const deleteAllNoti = () => {};
 
-  };
-
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
   return (
     <nav className="sticky top-0 z-50">
       <div className=" bg-gray-800  px-2 sm:px-6 lg:px-8">
