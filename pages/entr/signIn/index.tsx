@@ -41,7 +41,7 @@ export default function Test() {
 
   // 테스트 로그인 아이디
   const findIdPwd = () => {
-    alert("id: test \npw: test123");
+    alert("id: sjlee01 \npw: sjlee01");
   };
 
   // 테스트 로그인
@@ -50,13 +50,13 @@ export default function Test() {
     if (values.testId == "ehoh01" && values.testPw === "ehoh01") {
       localStorage.clear();
       localStorage.setItem("ACCESS_TOKEN", "TEST_TOKEN");
-      localStorage.setItem("NAME", "오은혜");
+      localStorage.setItem("NAME", "오나박이");
       alert("로그인 됨");
       router.push("/");
     } else if (values.testId == "sjlee01" && values.testPw === "sjlee01") {
       localStorage.clear();
       localStorage.setItem("ACCESS_TOKEN", "TEST_TOKEN");
-      localStorage.setItem("NAME", "이승제");
+      localStorage.setItem("NAME", "이나박김");
       alert("로그인 됨");
       router.push("/");
     } else {

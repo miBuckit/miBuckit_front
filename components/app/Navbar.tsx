@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { document } from "postcss";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
   // 테스트 데이터
-  const notiData = [
+  const [notiData, setNotiData] = useState([
     {
       id: "1",
       cntn: "안녕하세요 이승제님 회원가입을 축하합니다.",
@@ -24,8 +25,7 @@ export default function Navbar() {
       id: "5",
       cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
     },
-  ];
-
+  ]);
   const [logOn, setLogOn] = useState("off");
   const [isNotiOpen, setIsNotiOpen] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
@@ -49,8 +49,9 @@ export default function Navbar() {
 
   const NotiList = notiData.map((item) => (
     <div
+      id={item.id}
       key={item.id}
-      className="p-2 text-ellipsis overflow-hidden flex justify-between h-[55px] mb-3 text-sm border-solid border-2 border-white-500"
+      className="notiList p-2 text-ellipsis overflow-hidden flex justify-between h-[55px] mb-3 text-sm border-solid border-2 border-white-500"
     >
       <div className="mr-3">
         <p className="">{item.cntn}</p>
@@ -61,13 +62,18 @@ export default function Navbar() {
     </div>
   ));
 
+  const notiItem = useRef(null);
+
   // 읽음Y/N 처리 필요
   const deleteNoti = (id: string) => {
     console.log(id);
+    setNotiData(notiData.filter((notiItem) => notiItem.id != id));
   };
 
   // 읽음Y/N 처리 필요
-  const deleteAllNoti = () => {};
+  const deleteAllNoti = () => {
+    setNotiData([]);
+  };
 
   useEffect(() => {
     const login = localStorage.getItem("ACCESS_TOKEN");
