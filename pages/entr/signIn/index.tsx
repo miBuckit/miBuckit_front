@@ -47,10 +47,16 @@ export default function Test() {
   // 테스트 로그인
   const testLogin = () => {
     console.log(values);
-    if (values.testId == "test" && values.testPw === "test123") {
+    if (values.testId == "ehoh01" && values.testPw === "ehoh01") {
       localStorage.clear();
       localStorage.setItem("ACCESS_TOKEN", "TEST_TOKEN");
-      localStorage.setItem("LOGIN", "on");
+      localStorage.setItem("NAME", "오은혜");
+      alert("로그인 됨");
+      router.push("/");
+    } else if (values.testId == "sjlee01" && values.testPw === "sjlee01") {
+      localStorage.clear();
+      localStorage.setItem("ACCESS_TOKEN", "TEST_TOKEN");
+      localStorage.setItem("NAME", "이승제");
       alert("로그인 됨");
       router.push("/");
     } else {

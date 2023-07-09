@@ -1,7 +1,7 @@
 import MainLayout from "@/components/app/Layout";
 import Link from "next/link";
 import path from "path";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const test = [

@@ -30,10 +30,6 @@ export default function Navbar() {
   const [isNotiOpen, setIsNotiOpen] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
 
-  const loginTest = () => {
-    setLogOn("on");
-  };
-
   const logoutTest = () => {
     localStorage.clear();
     setLogOn("off");
@@ -73,7 +69,12 @@ export default function Navbar() {
   // 읽음Y/N 처리 필요
   const deleteAllNoti = () => {};
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const login = localStorage.getItem("ACCESS_TOKEN");
+    if (login != null) {
+      setLogOn("on");
+    }
+  }, []);
   return (
     <nav className="sticky top-0 z-50">
       <div className=" bg-gray-800  px-2 sm:px-6 lg:px-8">
