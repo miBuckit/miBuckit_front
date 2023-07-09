@@ -1,15 +1,17 @@
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Test() {
   const [values, setValues] = useState({
-    testNm: "",
     testId: "",
     testPw: "",
   });
 
   const [id, setId] = useState();
+
+  const router = useRouter();
 
   const handleOnClick2 = () => {
     const url = "http://localhost:8080/test/post";
@@ -36,6 +38,26 @@ export default function Test() {
   const handleChange2 = (e) => {
     setId(e.target.value);
   };
+
+  // 테스트 로그인 아이디
+  const findIdPwd = () => {
+    alert("id: test \npw: test123");
+  };
+
+  // 테스트 로그인
+  const testLogin = () => {
+    console.log(values);
+    if (values.testId == "test" && values.testPw === "test123") {
+      localStorage.clear();
+      localStorage.setItem("ACCESS_TOKEN", "TEST_TOKEN");
+      localStorage.setItem("LOGIN", "on");
+      alert("로그인 됨");
+      router.push("/");
+    } else {
+      alert("틀렸습니다...?");
+    }
+  };
+
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="text-center sm:mx-auto sm:w-full sm:max-w-sm">
@@ -71,12 +93,12 @@ export default function Test() {
                 PW
               </label>
               <div className="text-sm">
-                <a
-                  href="#"
+                <button
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
+                  onClick={findIdPwd}
                 >
                   Forgot password?
-                </a>
+                </button>
               </div>
             </div>
             <div className="mt-2">
@@ -92,18 +114,17 @@ export default function Test() {
               ></input>
             </div>
           </div>
-
-          {/* 로그인 버튼 */}
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              onClick={handleOnClick2}
-            >
-              로그인 하기
-            </button>
-          </div>
         </form>
+        {/* 로그인 버튼 */}
+        <div className="mt-5">
+          <button
+            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={testLogin}
+          >
+            로그인 하기
+          </button>
+        </div>
+        {/* </form> 테스트 끝나면 이거 해제해서 사용 */}
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ export default function Navbar() {
     },
   ];
 
-  const [logOn, setLogOn] = useState("off");
+  const [logOn, setLogOn] = useState(localStorage.getItem("LOGIN"));
   const [isNotiOpen, setIsNotiOpen] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
 
@@ -35,6 +35,7 @@ export default function Navbar() {
   };
 
   const logoutTest = () => {
+    localStorage.clear();
     setLogOn("off");
   };
 
