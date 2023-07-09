@@ -1,16 +1,34 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 
-const navigation = [
-  { name: "main", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-];
-
 export default function Navbar() {
+  // 테스트 데이터
+  const notiData = [
+    {
+      id: "1",
+      cntn: "안녕하세요 이승제님 회원가입을 축하합니다.",
+    },
+    {
+      id: "2",
+      cntn: "공지사항",
+    },
+    {
+      id: "3",
+      cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
+    },
+    {
+      id: "4",
+      cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
+    },
+    {
+      id: "5",
+      cntn: "길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트길이테스트",
+    },
+  ];
+
   const [logOn, setLogOn] = useState("off");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isNotiOpen, setIsNotiOpen] = useState(false);
+  const [isSettingOpen, setIsSettingOpen] = useState(false);
 
   const loginTest = () => {
     setLogOn("on");
@@ -20,15 +38,42 @@ export default function Navbar() {
     setLogOn("off");
   };
 
-  const toggleButton = () => {
-    setIsOpen((isOpen) => !isOpen);
-    console.log(isOpen);
+  const toggleProfile = () => {
+    setIsSettingOpen((isSettingOpen) => !isSettingOpen);
+    setIsNotiOpen((isSettingOpen) => false);
+    console.log(isSettingOpen);
   };
+
+  const toggleNoti = () => {
+    setIsNotiOpen((isNotiOpen) => !isNotiOpen);
+    setIsSettingOpen((isNotiOpen) => false);
+    console.log(isNotiOpen);
+  };
+
+  const NotiList = notiData.map((item) => (
+    <div
+      key={item.id}
+      className="p-2 text-ellipsis overflow-hidden flex justify-between h-[55px] mb-3 text-sm border-solid border-2 border-white-500"
+    >
+      <div className="mr-3">
+        <p className="">{item.cntn}</p>
+      </div>
+      <div className="text-gray-500">
+        <button onClick={() => deleteNoti}>X</button>
+      </div>
+    </div>
+  ));
+
+  // 읽음Y/N 처리 필요
+  const deleteNoti = (id: string) => {};
+
+  // 읽음Y/N 처리 필요
+  const deleteAllNoti = () => {};
 
   useEffect(() => {}, []);
   return (
-    <nav className="bg-gray-800">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <nav className="sticky top-0 z-50">
+      <div className=" bg-gray-800  px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
@@ -82,9 +127,9 @@ export default function Navbar() {
               ></img>
             </div>
             <div className="hidden sm:ml-6 sm:block">
-              <div className="flex space-x-4">
+              <div className="flex space-x-3">
                 <Link
-                  href="/buckit/main"
+                  href="/"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   aria-current="page"
                 >
@@ -133,27 +178,55 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="flex items-center">
-                {/* 알림버튼 */}
-                <button
-                  type="button"
-                  className="lg:inline rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
+                <div className="relative ml-3">
+                  <div>
+                    {/* 알림버튼 */}
+                    <button
+                      type="button"
+                      className="lg:inline rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      onClick={toggleNoti}
+                    >
+                      <svg
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  {/* 알림 아래 div */}
+                  <div
+                    className={
+                      (isNotiOpen ? "" : "hidden" + " ") +
+                      "overflow-auto scrollbar-hide py-5 px-5 absolute right-0 z-10 mt-2 w-[300px] h-[320px] origin-top-right rounded-md bg-gray-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    }
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="user-menu-button"
+                    tabIndex={-1}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                    />
-                  </svg>
-                </button>
+                    <div className=" sh-5 mb-3 flex justify-between">
+                      <label className="text-sm text-gray-700">알림</label>
+                      {/* 모두삭제 버튼은 전체 읽음 처리가 안된 부분 읽음(Y)으로 처리 */}
+                      <button
+                        className="text-sm text-gray-700"
+                        onClick={deleteAllNoti}
+                      >
+                        모두삭제
+                      </button>
+                    </div>
+                    {/* 알림 리스트 */}
+                    {NotiList}
+                  </div>
+                </div>
                 {/* 프로필 이미지 */}
                 <div className="relative ml-3">
                   <div>
@@ -163,7 +236,7 @@ export default function Navbar() {
                       id="user-menu-button"
                       aria-expanded="false"
                       aria-haspopup="true"
-                      onClick={toggleButton}
+                      onClick={toggleProfile}
                     >
                       <span className="sr-only">Open user menu</span>
                       <img
@@ -174,10 +247,11 @@ export default function Navbar() {
                     </button>
                   </div>
                   {/* 프로필 사진 아래 div */}
+
                   <div
                     className={
-                      (isOpen ? "" : "hidden" + " ") +
-                      "absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      (isSettingOpen ? "" : "hidden" + " ") +
+                      "absolute flex flex-col text-center right-0 z-10 mt-2 w-24 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     }
                     role="menu"
                     aria-orientation="vertical"
@@ -185,12 +259,20 @@ export default function Navbar() {
                     tabIndex={-1}
                   >
                     <Link
+                      href="/buckit/profile"
+                      className="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem"
+                      id="user-menu-item-0"
+                    >
+                      내 프로필
+                    </Link>
+                    <Link
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       id="user-menu-item-0"
                     >
-                      설정
+                      계정 설정
                     </Link>
                     <button
                       className="block px-4 py-2 text-sm text-gray-700"
