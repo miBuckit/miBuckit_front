@@ -54,7 +54,7 @@ export default function Test() {
       alert("로그인 됨");
       router.push("/");
     } else {
-      alert("틀렸습니다...?");
+      alert("틀렸습니다...? forgot버튼을 눌러보시길");
     }
   };
 

@@ -26,7 +26,7 @@ export default function Navbar() {
     },
   ];
 
-  const [logOn, setLogOn] = useState(localStorage.getItem("LOGIN"));
+  const [logOn, setLogOn] = useState("off");
   const [isNotiOpen, setIsNotiOpen] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
 
@@ -60,13 +60,15 @@ export default function Navbar() {
         <p className="">{item.cntn}</p>
       </div>
       <div className="text-gray-500">
-        <button onClick={() => deleteNoti}>X</button>
+        <button onClick={() => deleteNoti(item.id)}>X</button>
       </div>
     </div>
   ));
 
   // 읽음Y/N 처리 필요
-  const deleteNoti = (id: string) => {};
+  const deleteNoti = (id: string) => {
+    console.log(id);
+  };
 
   // 읽음Y/N 처리 필요
   const deleteAllNoti = () => {};
